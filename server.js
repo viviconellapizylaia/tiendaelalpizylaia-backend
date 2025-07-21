@@ -6,6 +6,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Servir archivos estáticos desde la carpeta RECURSOS
+app.use('/recursos', express.static('RECURSOS'));
+
+app.post('/api/descargar', (req, res) => {
+  const { id } = req.body;
+
+  // Aquí se puede hacer lógica más avanzada. Por ahora solo servimos 1 archivo fijo.
+  const ruta = `${__dirname}/RECURSOS/AGENDA DOCENTE PARA IMPRIMIR 2025-2026.pdf`;
+
+  res.download(ruta, 'Agenda_Docente_2025_2026.pdf', err => {
+    if (err) {
+      console.error('Error al descargar:', err);
+      res.status(500).send('Error al descargar el archivo.');
+    }
+  });
+});
+
 // Ruta principal
 app.get('/', (req, res) => {
   res.send('¡Tu servidor funciona correctamente! 🚀');
