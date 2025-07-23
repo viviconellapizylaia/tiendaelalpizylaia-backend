@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+<<<<<<< HEAD
 const mercadopago = require('mercadopago');
 
 // Configura tu token de acceso
@@ -8,6 +9,8 @@ mercadopago.configure({
   access_token: 'APP_USR-4401658136441176-072220-cfdfb79758a540f18ed79639dc9b0dca-232985972'
 });
 
+=======
+>>>>>>> df6b877fffa3058fb24f36cf37485e3f1cdcbd6c
 const app = express();
 
 app.use(cors());
@@ -34,6 +37,7 @@ app.post('/api/pagar', (req, res) => {
     url: `https://pagosimulacion.com/pago-exitoso?producto=${productId}&metodo=${method}&moneda=${currency}`
   });
 });
+<<<<<<< HEAD
 app.post('/api/pago-carrito', async (req, res) => {
   const { items, email } = req.body;
 
@@ -63,6 +67,8 @@ app.post('/api/pago-carrito', async (req, res) => {
   }
 });
 
+=======
+>>>>>>> df6b877fffa3058fb24f36cf37485e3f1cdcbd6c
 
 // Ruta principal
 app.get('/', (req, res) => {
