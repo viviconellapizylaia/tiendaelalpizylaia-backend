@@ -82,7 +82,8 @@ app.post('/api/pago-carrito', async (req, res) => {
         title: item.nombre || 'Producto sin nombre',
         quantity: parseInt(item.cantidad) || 1,
         currency_id: "COP",
-        unit_price: parseFloat(item.precio) || 0
+        unit_price: parseFloat(item.precio) > 0 ? parseFloat(item.precio) : 1,
+
       })),
       payer: {
         email: email
